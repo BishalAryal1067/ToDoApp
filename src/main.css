@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text&display=swap');
+
+:root{
+	--default-font: 'Wix Madefor Text', sans-serif;
+	--default-font-weight: 300; 
+
+}
+
+body{
+	
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: grid;
+	place-items: center;
+}
+
+.title{
+	font-weight: 300;
+	font-family:initial;
+	font-weight: 500;
+	color: rgba(40, 40, 40, 0.784);
+}
+
+.title input{
+   font-size: 1.25rem;
+   outline: transparent;
+   border: none;
+   font-family: var(--default-font);
+   font-size: 2rem;
+   color: blueviolet;
+}
+
+#new-todo-form h3{
+	margin-bottom: 0;
+	font-family: var(--default-font);
+	font-size: 1.65rem;
+	color: rgb(127, 52, 198);
+}
+
+#new-todo-form h4:first-of-type{
+	margin: .5rem 0;
+	font-size: 1.15rem;
+	color: rgb(54, 54, 60);
+	font-family: var(--default-font);
+}
+
+#content{
+  box-sizing: border-box;
+  padding: .5rem .75rem;
+  min-width: 25rem;
+  font-size: 1.15rem;
+  outline: transparent;
+  border: .15rem solid rgba(137, 43, 226, 0.456);
+  border-radius: .25rem;
+}
+
+.option-heading{
+	font-family: var(--default-font);
+	font-size: 1.15rem;
+	margin-bottom: .75rem;
+}
+
+.options{
+	display: flex;
+	gap: 1.5rem;
+	padding-bottom: .95rem;
+}
+
+.options label{
+	display: flex;
+	gap: .25rem;
+	box-sizing: border-box;
+	border-radius: .25rem;
+	padding: .75rem 1.5rem;
+	border: .1rem solid rgba(75, 75, 75, 0.527);
+	font-size: 1.15rem;
+	font-family: var(--default-font);
+}
+
+.options input[type='radio']{
+	accent-color:blueviolet;
+	cursor: pointer;
+}
+
+input[type='submit']{
+	background-color: blueviolet;
+	outline: transparent;
+	border: none;
+	border-radius: .25rem;
+	color: white;
+	font-size: 1.15rem;
+	font-weight: 500;
+	padding: .5rem 1.45rem;
+	cursor: pointer;
+}
+
+hr{
+	margin: 1.5rem 0;
+}
+
+.todo-list h3{
+	font-family: var(--default-font);
+	font-size: 1.25rem;
+}
+
+.todo-item{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todo-item .todo-content{
+	width: 75%;
+	padding: 0;
+}
+
+.todo-item input:first-of-type{
+	accent-color: bluevoilet;
+}
+
+.todo-content input{
+	width: 100%;
+	border: none;
+	outline: transparent;
+	font-size: 1.08rem;
+}
