@@ -60,7 +60,6 @@ const removeTask = (task) => {
 </script>
 
 <template>
-	<main class="app">
 		<article class="w-full lg:w-[40%] mx-auto my-5 lg:border-2 pb-12 lg:rounded-xl">
 			<div class="px-6 py-5 flex flex-col gap-1">
 				<p class="text-xl text-blue-700 font-semibold">Add a task</p>
@@ -108,10 +107,9 @@ const removeTask = (task) => {
 			</section>
 		</article>
 	</main>
-</template>
 
 <style>
-.app {
+article {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
