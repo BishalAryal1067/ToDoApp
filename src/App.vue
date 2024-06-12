@@ -106,11 +106,12 @@ const removeTask = (task) => {
 			</div>
 		</section>
 	</article>
+</template>
 
-	<style>
-		article {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		}
-	</style>
+<style>
+article {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+</style>
