@@ -87,14 +87,15 @@ const removeTask = (task) => {
 
 			<hr class="mb-6">
 
-			<input type="text" v-model="searchQuery" @input="searchOnInput"
-				class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full" placeholder="search task">
+			<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full"
+				placeholder="search task">
 
 			<hr class="my-6">
 
 			<section class="px-6">
 				<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
-				<p v-if="taskList.length == 0" class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No tasks to
+				<p v-if="taskList.length == 0"
+					class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No tasks to
 					show</p>
 
 				<div v-for="task in taskList" v-else
