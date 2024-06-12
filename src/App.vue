@@ -1,6 +1,5 @@
 <script setup>
-import { ref, onMounted, onUpdated, watch, warn, watchEffect } from 'vue'
-import AddTask from './components/AddTask.vue';
+import { ref, onMounted, onUpdated, watch, warn, watchEffect } from 'vue';
 
 const taskCategory = ref(null);
 const taskName = ref("");
