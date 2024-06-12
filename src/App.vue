@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUpdated, watch, warn, watchEffect } from 'vue';
 
+
 const taskCategory = ref(null);
 const taskName = ref("");
 const taskList = ref([]);
@@ -79,32 +80,37 @@ const removeTask = (task) => {
 				cannot
 				be left empty</span>
 
-			<button class="bg-teal-700 text-white font-semibold py-2 rounded-xl max-w-fit px-12"
-				@click="handleSubmit">Submit</button>
+			<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full"
+				placeholder="search task">
+
+			<hr class="mb-6" />
+
+			<section class="px-6">
+				<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
+				<p v-if="taskList.length == 0"
+					class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No tasks to
+					show</p>
+
+				<hr class="my-6" />
+
+				<section class="px-6">
+					<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
+					<p v-if="taskList.length == 0"
+						class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No
+						tasks to
+						show</p>
+
+					<div v-for="task in taskList" v-else
+						class="border-2 rounded-lg px-4 py-2 my-2 flex items-center justify-between">
+						<div>
+							<p class="text-lg text-gray-700 font-semibold"> {{ task.taskName }} </p>
+							<p class="text-sm text-gray-500 font-medium">created on: {{ task.date }}</p>
+						</div>
+						<i class="fa-solid fa-trash text-red-500 cursor-pointer" @click="removeTask(task)"></i>
+					</div>
+				</section>
+			</section>
 		</div>
-
-		<hr class="mb-6" />
-
-		<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full"
-			placeholder="search task" />
-
-		<hr class="my-6" />
-
-		<section class="px-6">
-			<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
-			<p v-if="taskList.length == 0"
-				class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No tasks to
-				show</p>
-
-			<div v-for="task in taskList" v-else
-				class="border-2 rounded-lg px-4 py-2 my-2 flex items-center justify-between">
-				<div>
-					<p class="text-lg text-gray-700 font-semibold"> {{ task.taskName }} </p>
-					<p class="text-sm text-gray-500 font-medium">created on: {{ task.date }}</p>
-				</div>
-				<i class="fa-solid fa-trash text-red-500 cursor-pointer" @click="removeTask(task)"></i>
-			</div>
-		</section>
 	</article>
 </template>
 
