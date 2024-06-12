@@ -83,12 +83,12 @@ const removeTask = (task) => {
 				@click="handleSubmit">Submit</button>
 		</div>
 
-		<hr class="mb-6">
+		<hr class="mb-6" />
 
-		<input type="text"
-			class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full" placeholder="search task">
+		<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full"
+			placeholder="search task" />
 
-		<hr class="my-6">
+		<hr class="my-6" />
 
 		<section class="px-6">
 			<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
