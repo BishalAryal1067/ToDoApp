@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUpdated, watch, warn, watchEffect } from 'vue';
+import { ref, onMounted } from 'vue';
 
 
 const taskCategory = ref(null);
@@ -32,9 +32,6 @@ const handleSubmit = () => {
 	if (isInputInvalid()) {
 		showError.value = true;
 	}
-
-
-
 	else {
 		showError.value = false;
 		const date = new Date()
@@ -51,8 +48,11 @@ const handleSubmit = () => {
 }
 
 onMounted(() => {
-	taskList.value = JSON.parse(localStorage.getItem("tasksCollection"));
-})
+	const storedTasks = localStorage.getItem("tasksCollection");
+	if (storedTasks) {
+		taskList.value = JSON.parse(storedTasks);
+	}
+});
 
 const removeTask = (task) => {
 	taskList.value = taskList.value.filter(currentTask => currentTask != task);
@@ -61,7 +61,7 @@ const removeTask = (task) => {
 </script>
 
 <template>
-	<article class="w-full lg:w-[40%] mx-auto my-5 lg:border-2 pb-12 lg:rounded-xl">
+	<article class="w-full h-full lg:w-[40%] mx-auto my-5 lg:border-2 lg:rounded-xl">
 		<div class="px-6 py-5 flex flex-col gap-1">
 			<p class="text-xl text-blue-700 font-semibold">Add a task</p>
 			<input v-model="taskName" type="text" placeholder="Enter task name"
@@ -74,33 +74,34 @@ const removeTask = (task) => {
 					<p class="capitalize">{{ category.label }}</p>
 				</div>
 			</div>
-
 			<span v-if="showError"
 				class="block border-[.1rem] border-red-400 px-2 py-1 rounded-lg text-red-600 font-semibold">Fields
 				cannot
 				be left empty</span>
+			<!--submit task-->
+			<button class="max-w-fit bg-blue-900 px-6 py-2 rounded-xl text-white font-semibold "
+				@click="handleSubmit">Submit</button>
 
-			<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 mx-6 max-w-full"
+			<hr class="mt-2">
+			<input type="text" class="border-2 border-gray-400 rounded-3xl px-2 py-1 my-3 max-w-full"
 				placeholder="search task">
 
 			<hr class="mb-6" />
-
 			<section class="px-6">
 				<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
-				<p v-if="taskList.length == 0"
-					class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No tasks to
-					show</p>
 
-				<hr class="my-6" />
-
-				<section class="px-6">
-					<h3 class="tex-lg font-semibold text-gray-700">TASK LIST</h3>
+				<Transition name="empty">
 					<p v-if="taskList.length == 0"
 						class="border-2 border-dashed flex justify-center py-2 my-5 text-gray-600 font-semibold">No
 						tasks to
 						show</p>
+				</Transition>
 
-					<div v-for="task in taskList" v-else
+
+
+
+				<TransitionGroup name="list" tag="ul">
+					<div v-if="taskList.length > 0" v-for="task in taskList"
 						class="border-2 rounded-lg px-4 py-2 my-2 flex items-center justify-between">
 						<div>
 							<p class="text-lg text-gray-700 font-semibold"> {{ task.taskName }} </p>
@@ -108,7 +109,7 @@ const removeTask = (task) => {
 						</div>
 						<i class="fa-solid fa-trash text-red-500 cursor-pointer" @click="removeTask(task)"></i>
 					</div>
-				</section>
+				</TransitionGroup>
 			</section>
 		</div>
 	</article>
@@ -120,4 +121,29 @@ article {
 	flex-direction: column;
 	justify-content: center;
 }
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+	transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+	opacity: 0;
+	transform: translateX(30px);
+}
+
+.empty-enter-active,
+.empty-leave-active {
+	transition: all 0.35s ease;
+}
+
+.empty-enter-from,
+.empty-leave-to {
+	opacity: 0;
+	transform: translateX(30px);
+}
+
+
 </style>
